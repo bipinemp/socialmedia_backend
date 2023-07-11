@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://socialmediafrontendapp.vercel.app",
+    origin: "https://socialmediafrontendapp-bipinemp.vercel.app",
     credentials: true,
   })
 );
@@ -30,7 +30,7 @@ app.use(
 app.use(
   "/api/users",
   cors({
-    origin: "https://socialmediafrontendapp.vercel.app",
+    origin: "https://socialmediafrontendapp-bipinemp.vercel.app",
     credentials: true,
   }),
   userRoutes
@@ -38,7 +38,7 @@ app.use(
 app.use(
   "/api/posts",
   cors({
-    origin: "https://socialmediafrontendapp.vercel.app",
+    origin: "https://socialmediafrontendapp-bipinemp.vercel.app",
     credentials: true,
   }),
   protect,
