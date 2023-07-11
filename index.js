@@ -3,7 +3,6 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
-import cors from "cors";
 import express from "express";
 import userRoutes from "./routes/userRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
@@ -19,31 +18,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "https://socialmediafrontendapp-bipinemp.vercel.app",
-    credentials: true,
-  })
-);
 
 // Routes
-app.use(
-  "/api/users",
-  cors({
-    origin: "https://socialmediafrontendapp-bipinemp.vercel.app",
-    credentials: true,
-  }),
-  userRoutes
-);
-app.use(
-  "/api/posts",
-  cors({
-    origin: "https://socialmediafrontendapp-bipinemp.vercel.app",
-    credentials: true,
-  }),
-  protect,
-  postRoutes
-);
+app.use("/api/users", userRoutes);
+app.use("/api/posts", protect, postRoutes);
 
 app.get("/", (req, res) => res.send("MERN is working"));
 
